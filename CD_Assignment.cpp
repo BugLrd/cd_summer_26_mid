@@ -13,9 +13,12 @@ int main() {
 	int lineNumber = 1;
 	while (getline(infile, line)) {
 		cout << "-----------------------" << " Line " << lineNumber << " -----------------------" << endl;
-		tokenization(line);
+		outfile << "-----------------------" << " Line " << lineNumber << " -----------------------" << endl;
+		cout << tokenization(line);
+		outfile << tokenization(line);
 		lineNumber++;
-		cout << "------------------------------------------------------" << endl;
 	}
+	cout << "------------------------------------------------------" << endl;
+	outfile << "------------------------------------------------------" << endl;
     return 0;
 }

@@ -7,7 +7,7 @@
 bool isNumeric(std::string input);
 bool isString(std::string input);
 bool isValid(std::string str);
-void detect(std::string token);
-void tokenization(std::string s);
+std::string detect(std::string token);
+std::string tokenization(std::string s);
 
 #endif

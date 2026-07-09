@@ -1,6 +1,6 @@
 
 #include "lexer.h"
-#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -21,7 +21,7 @@ bool isString(string input) {
     return false;
 }
 
-bool isValid(string str) {
+bool isValidIdentifier(string str) {
     int start = 0;
     int end = str.length() - 1;
 
@@ -68,69 +68,64 @@ string trim(string s) {
     return s.substr(start, end - start + 1);
 }
 
-void detect(string token) {
+string detect(string token) {
     string keywords[] = {"cout", "endl", "return", "return", "int", "float"};
     string operators[] = {"+", "-", "*", "/", "<<", ">>" };
     char punctuation[] = {';', ',', '(', ')', '{', '}'};
 
     for (string kw : keywords) {
         if (token == kw) {
-            cout << token << " -> Keyword" << endl;
-            return;
+            return token + " -> Keyword\n";
         }
     }
 
     for (string op : operators) {
         if (token == op) {
-            cout << token << " -> Operator" << endl;
-            return;
+            return token + " -> Operator\n";
         }
     }
 
     if (token.length() == 1) {
         for (char p : punctuation) {
             if (token[0] == p) {
-                cout << token << " -> Punctuation" << endl;
-                return;
+                return token + " -> Punctuation\n";
             }
         }
     }
 
     if (isNumeric(token)) {
-        cout << token << " -> Numeric Constant" << endl;
-        return;
+        return token + " -> Numeric Constant\n";
     }
 
-    if (isValid(token)) {
-        cout << token << " -> Identifier" << endl;
-        return;
+    if (isValidIdentifier(token)) {
+        return token + " -> Identifier\n";
     }
 
     if (isString(token)) {
-        cout << token << " -> String" << endl;
-        return;
+        return token + " -> String\n";
     }
 
-    cout << token << " -> Unknown Token" << endl;
+    return token + " -> Unknown Token\n";
 }
 
-void tokenization(string s, ofstream& outfile) {
+string tokenization(string s) {
     s = trim(s);
-    cout << "Tokenizing: " << s << endl;
-    outfile << "Tokenizing: " << s << endl;
+    string result = "Tokenizing: " + s + "\n";
 
     int start = 0;
     int i = 0;
 
     while (i < s.length()) {
         if (s[i] == ' ') {
-            detect(s.substr(start, i - start));
+            result += detect(s.substr(start, i - start));
             start = i + 1;
         }
         i++;
     }
 
     if (start < s.length()) {
-        detect(s.substr(start));
+        result += detect(s.substr(start));
     }
+
+    return result;
 }

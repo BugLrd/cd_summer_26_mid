@@ -1,0 +1,34 @@
+----------------------- Line 1 -----------------------
+Tokenizing: int main ( ) {
+int -> Keyword
+main -> Identifier
+( -> Punctuation
+) -> Punctuation
+{ -> Punctuation
+----------------------- Line 2 -----------------------
+Tokenizing: cout << "hello" ;
+cout -> Keyword
+<< -> Operator
+"hello" -> String
+; -> Punctuation
+----------------------- Line 3 -----------------------
+Tokenizing: int x ;
+int -> Keyword
+x -> Identifier
+; -> Punctuation
+----------------------- Line 4 -----------------------
+Tokenizing: float y ;
+float -> Keyword
+y -> Identifier
+; -> Punctuation
+----------------------- Line 5 -----------------------
+Tokenizing: return x + y ;
+return -> Keyword
+x -> Identifier
++ -> Operator
+y -> Identifier
+; -> Punctuation
+----------------------- Line 6 -----------------------
+Tokenizing: }
+} -> Punctuation
+------------------------------------------------------
